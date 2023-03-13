@@ -1,10 +1,11 @@
 package com.example.reward.domain.reward.repository;
 
 import com.example.reward.domain.reward.entity.Rewards;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RewardsRepository extends JpaRepository<Rewards, Long>, RewardsRepositoryCustom {
+public interface RewardsRepositoryCustom  {
 
+	Optional<Rewards> findByIdWithMember(Long id);
 }
