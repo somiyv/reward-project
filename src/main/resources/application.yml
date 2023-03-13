@@ -5,6 +5,12 @@ spring:
       path: /h2-console  # H2 Console의 Path
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/test  # H2 접속 정보
+    url: jdbc:h2:mem:test  # H2 접속 정보
     username: sa  # H2 접속 시 입력할 username 정보
     password:  # H2 접속 시 입력할 password 정보
+  jpa:
+    open-in-view: false
+    defer-datasource-initialization: true
+    show_sql: true
+    hibernate:
+      ddl-auto: none
