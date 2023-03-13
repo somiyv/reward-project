@@ -20,7 +20,7 @@ public class RewardDTO {
 		instance.id = rewards.getId();
 		instance.title = rewards.getTitle();
 		instance.description = rewards.getDescription();
-		instance.createDate = LocalDateTime.now();
+		instance.createDate = rewards.getCreateDate();
 		instance.point = rewards.getPoint();
 		instance.member = MemberDTO.of(rewards.getMember());
 		return instance;
