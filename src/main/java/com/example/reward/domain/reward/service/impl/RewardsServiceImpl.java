@@ -23,7 +23,7 @@ public class RewardsServiceImpl implements RewardsService {
 	@Override
 	public RewardDTO getRewardById(Long id) {
 		Rewards rewards = rewardsRepository.findByIdWithMember(id)
-				.orElseThrow(() -> ApiException.of(ErrorCode.BAD_REQUEST));
+				.orElseThrow(() -> ApiException.of(ErrorCode.REWARDS_NOT_FOUND));
 		return RewardDTO.of(rewards);
 	}
 
