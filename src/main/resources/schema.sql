@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS rewards (
     id BIGINT NOT NULL AUTO_INCREMENT,
     member_id BIGINT NOT NULL COMMENT '사용자 pk',
     title VARCHAR(50) COMMENT '제목',
-    description VARCHAR(50) COMMENT '설명',
+    description TEXT COMMENT '설명',
     point int COMMENT '포인트',
     create_date datetime COMMENT '생성일자',
     PRIMARY KEY (id),

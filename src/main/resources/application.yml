@@ -1,16 +1,17 @@
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console  # H2 Console의 Path
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test  # H2 접속 정보
-    username: sa  # H2 접속 시 입력할 username 정보
-    password:  # H2 접속 시 입력할 password 정보
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/testdb  # H2 접속 정보
+    username: test  # H2 접속 시 입력할 username 정보
+    password: test  # H2 접속 시 입력할 password 정보
   jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     defer-datasource-initialization: true
     show_sql: true
     hibernate:
       ddl-auto: none
+  redis:
+    host: redis
+    port: 6379
+    password:
