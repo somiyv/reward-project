@@ -2,6 +2,7 @@ package com.example.reward.domain.reward.dto;
 
 import com.example.reward.domain.member.dto.MemberDTO;
 import com.example.reward.domain.reward.entity.Rewards;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.Getter;
 
@@ -12,15 +13,15 @@ public class RewardDTO {
 	private MemberDTO member;
 	private String title;
 	private String description;
-	private int point;
-	private LocalDateTime createDate;
+	private long point;
+	private LocalDate createDate;
 
 	public static RewardDTO of(Rewards rewards) {
 		RewardDTO instance = new RewardDTO();
 		instance.id = rewards.getId();
 		instance.title = rewards.getTitle();
 		instance.description = rewards.getDescription();
-		instance.createDate = rewards.getCreateDate();
+		instance.createDate = rewards.getRewardDate();
 		instance.point = rewards.getPoint();
 		instance.member = MemberDTO.of(rewards.getMember());
 		return instance;

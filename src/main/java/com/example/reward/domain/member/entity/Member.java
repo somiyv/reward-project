@@ -1,5 +1,6 @@
 package com.example.reward.domain.member.entity;
 
+import com.google.common.base.Joiner;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,4 +27,8 @@ public class Member {
 
 	@Column
 	private boolean isLogin;
+
+	public String getRewardDaysKey() {
+		return Joiner.on(":").join("reward", "member", getId());
+	}
 }
