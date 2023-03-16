@@ -3,6 +3,9 @@ spring:
     console:
       enabled: true
       path: /h2-console  # H2 Console의 Path
+      settings:
+        web-allow-others: true  # 추가
+
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test  # H2 접속 정보
@@ -18,3 +21,13 @@ spring:
     host: redis
     port: 6379
     password:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: admin
+    password: admin
+
+rabbitmq:
+  queue: 'reward.queue'
+  exchange: 'reward.exchange'
+  routing: 'reward.key.#'

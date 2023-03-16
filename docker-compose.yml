@@ -1,28 +1,19 @@
 version: '3'
 
 services:
-#  mysql:
-#    image: mysql:5.7
-#    ports:
-#      - "3306:3306"
-#    environment:
-#      - MYSQL_DATABASE=testdb
-#      - MYSQL_USER=test
-#      - MYSQL_PASSWORD=test
-#      - MYSQL_ROOT_PASSWORD=test
-#    command:
-#      - --character-set-server=utf8mb4
-#      - --collation-server=utf8mb4_unicode_ci
-#    volumes:
-#      - ./db/initdb.d:/docker-entrypoint-initdb.d
-#      - ./db/conf.d:/etc/mysql/conf.d
-
-
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
   app:
     build:
       context: .
@@ -30,10 +21,11 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-#      - mysql
+      - rabbitmq
       - redis
     environment:
       - SPRING_REDIS_HOST=redis
       - SPRING_REDIS_PORT=6379
+      - SPRING_RABBITMQ_HOST=rabbitmq
 
 
