@@ -15,5 +15,6 @@ spring:
     hibernate:
       ddl-auto: none
   redis:
-    host: 127.0.0.1
-    port: 16379
+    host: redis
+    port: 6379
+    password:

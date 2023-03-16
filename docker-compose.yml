@@ -1,21 +1,21 @@
 version: '3'
 
 services:
-  mysql:
-    image: mysql:5.7
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_DATABASE=testdb
-      - MYSQL_USER=test
-      - MYSQL_PASSWORD=test
-      - MYSQL_ROOT_PASSWORD=test
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ./db/initdb.d:/docker-entrypoint-initdb.d
-      - ./db/conf.d:/etc/mysql/conf.d
+#  mysql:
+#    image: mysql:5.7
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      - MYSQL_DATABASE=testdb
+#      - MYSQL_USER=test
+#      - MYSQL_PASSWORD=test
+#      - MYSQL_ROOT_PASSWORD=test
+#    command:
+#      - --character-set-server=utf8mb4
+#      - --collation-server=utf8mb4_unicode_ci
+#    volumes:
+#      - ./db/initdb.d:/docker-entrypoint-initdb.d
+#      - ./db/conf.d:/etc/mysql/conf.d
 
 
   redis:
@@ -30,12 +30,9 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - mysql
+#      - mysql
       - redis
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/testdb
-      - SPRING_DATASOURCE_USERNAME=test
-      - SPRING_DATASOURCE_PASSWORD=test
       - SPRING_REDIS_HOST=redis
       - SPRING_REDIS_PORT=6379
 
