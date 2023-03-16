@@ -34,7 +34,7 @@ public class RewardsController {
 	@GetMapping()
 	public ResponseEntity<List<RewardDTO>> getRewards(
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate createDate,
-			@RequestParam SortType sort) {
+			@RequestParam(defaultValue = "asc") SortType sort) {
 		return ResponseEntity.ok(rewardsService.getRewards(createDate, sort));
 	}
 

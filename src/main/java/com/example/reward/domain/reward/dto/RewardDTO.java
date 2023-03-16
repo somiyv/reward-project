@@ -14,14 +14,14 @@ public class RewardDTO {
 	private String title;
 	private String description;
 	private long point;
-	private LocalDate createDate;
+	private LocalDate rewardDate;
 
 	public static RewardDTO of(Rewards rewards) {
 		RewardDTO instance = new RewardDTO();
 		instance.id = rewards.getId();
 		instance.title = rewards.getTitle();
 		instance.description = rewards.getDescription();
-		instance.createDate = rewards.getRewardDate();
+		instance.rewardDate = rewards.getRewardDate();
 		instance.point = rewards.getPoint();
 		instance.member = MemberDTO.of(rewards.getMember());
 		return instance;

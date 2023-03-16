@@ -17,8 +17,11 @@ public class MessageReceiver {
 
 	@RabbitListener(queues = "${rabbitmq.queue}")
 	public void receiveMessage(RewardCreateRequest message) {
-		log.info("Received message: {}", GsonHelper.toJson(message));
-		rewardsService.createRewards(message);
+		try {
+			rewardsService.createRewards(message);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
 	}
 
 }
