@@ -3,11 +3,12 @@ package com.example.reward.config;
 import com.example.reward.support.ApiException;
 import com.example.reward.support.ErrorCode;
 import com.example.reward.support.ErrorResponse;
-import java.time.format.DateTimeParseException;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -29,6 +30,13 @@ public class GlobalExceptionHandler {
 		log.error(exception.getMessage(), exception);
 		ErrorResponse errorResponse = ErrorResponse.of(ErrorCode.MISSING_REQUEST_PARAMETER);
 		return ResponseEntity.badRequest().body(errorResponse);
+	}
+
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	public ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupportedException(
+			HttpRequestMethodNotSupportedException exception) {
+		ErrorResponse errorResponse = ErrorResponse.of(ErrorCode.METHOD_NOT_ALLOWED);
+		return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(errorResponse);
 	}
 
 	@ExceptionHandler({MethodArgumentTypeMismatchException.class, BindException.class})
