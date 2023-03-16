@@ -11,5 +11,6 @@ public interface RewardsService {
 	RewardDTO getRewardById(Long id);
 	List<RewardDTO> getRewards(LocalDate createDate, SortType sortType);
 	RewardDTO createRewards(RewardCreateRequest request);
+	RewardCreateRequest validation(Long memberId);
 
 }
