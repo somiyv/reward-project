@@ -14,9 +14,12 @@
 ```
 ./gradlew clean build
 docker-compose up --build 
-또는 
-docker-compose up -d
 ```
+
+# 테스트 방법
+1. 메인페이지에 등록된 아이디로 로그인합니다.
+2. 조회 또는 보상지급 버튼을 눌러 보상을 확인합니다.
+3. 리스트에서 눌러 상세 데이터를 조회합니다.
 
 # 주의사항
 - h2-console 접속시, jdbc url -> jdbc:h2:mem:test 로 변경 필요
