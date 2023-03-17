@@ -110,7 +110,8 @@ export default {
           memberId: this.memberId
         }
       }).then(() => {
-        this.$forceUpdate();
+        alert('보상 지급 결과 확인하기!')
+        this.getRewardList();
       })
       .catch((error) => {
         alert(error.response.data.error.message)
