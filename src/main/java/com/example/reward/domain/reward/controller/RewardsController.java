@@ -7,7 +7,10 @@ import com.example.reward.domain.reward.service.RewardsService;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class RewardsController {
 
+	@Value("${rabbitmq.exchange}")
+	private String exchange;
+	@Value("${rabbitmq.routing}")
+	private String routingKey;
 	private final RewardsService rewardsService;
+	private final RabbitTemplate rabbitTemplate;
 
 	// 보상 데이터 상세 조회
 	@GetMapping("{id}")
@@ -39,8 +47,10 @@ public class RewardsController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<RewardDTO> createRewards(
+	public ResponseEntity<HttpStatus> createRewards(
 			@RequestBody RewardCreateRequest request) {
-		return ResponseEntity.ok(rewardsService.createRewards(request));
+		RewardCreateRequest createRequest = rewardsService.validation(request.getMemberId());
+		rabbitTemplate.convertAndSend(exchange, routingKey, createRequest);
+		return ResponseEntity.ok(HttpStatus.OK);
 	}
 }

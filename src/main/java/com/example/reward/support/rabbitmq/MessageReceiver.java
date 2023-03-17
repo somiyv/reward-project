@@ -2,7 +2,6 @@ package com.example.reward.support.rabbitmq;
 
 import com.example.reward.domain.reward.controller.request.RewardCreateRequest;
 import com.example.reward.domain.reward.service.RewardsService;
-import com.example.reward.utils.GsonHelper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -23,5 +22,4 @@ public class MessageReceiver {
 			log.error(e.getMessage(), e);
 		}
 	}
-
 }
