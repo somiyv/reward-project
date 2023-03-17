@@ -13,7 +13,9 @@
 루트 경로에서 아래 명령어 실행 후, localhost:8080/login 접속
 ```
 ./gradlew clean build
-docker-compose up --build
+docker-compose up --build 
+또는 
+docker-compose up -d
 ```
 
 # 주의사항
