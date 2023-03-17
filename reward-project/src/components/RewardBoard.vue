@@ -109,7 +109,7 @@ export default {
         data: {
           memberId: this.memberId
         }
-      }).then((result) => {
+      }).then(() => {
         location.reload();
       })
       .catch((error) => {
