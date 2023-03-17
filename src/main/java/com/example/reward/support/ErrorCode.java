@@ -9,9 +9,15 @@ public enum ErrorCode {
 	MISSING_REQUEST_PARAMETER(HttpStatus.BAD_REQUEST, "필수 정보가 존재하지 않습니다."),
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버오류 발생"),
 
+	METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "요청 메소드가 허용되지 않습니다."),
+
 	REWARDS_NOT_FOUND(HttpStatus.NOT_FOUND, "보상데이터가 존재하지 않습니다."),
-	MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "멤버가 존재하지 않습니다.")
-	;
+	MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "멤버가 존재하지 않습니다."),
+
+	REWARD_EVENT_HAS_ENDED(HttpStatus.CONFLICT, "보상 이벤트 지급이 종료되었습니다."),
+	ALREADY_HAS_REWARDED(HttpStatus.CONFLICT, "오늘 이미 보상 지급을 받으셨습니다."),
+	AUTHENTICATION_FAIL(HttpStatus.UNAUTHORIZED, "아이디 또는 비밀번호가 틀렸습니다.");
+
 
 	private HttpStatus httpStatus;
 	private String message;

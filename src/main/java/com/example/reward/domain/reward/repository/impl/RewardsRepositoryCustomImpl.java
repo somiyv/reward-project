@@ -41,15 +41,12 @@ public class RewardsRepositoryCustomImpl extends QuerydslRepositorySupport
 
 	@Override
 	public List<Rewards> findAllByCreateDateWithMember(LocalDate createDate, SortType sortType) {
-		LocalDateTime start = createDate.atStartOfDay();
-		LocalDateTime end = LocalDateTime.of(createDate, LocalTime.MAX);
-
 		Order direction = getDirection(sortType);
 		OrderSpecifier<?> order = new OrderSpecifier<>(direction, rewards.id);
 
 		return from(rewards)
 				.join(rewards.member, member).fetchJoin()
-				.where(rewards.createDate.between(start, end))
+				.where(rewards.rewardDate.eq(createDate))
 				.orderBy(order)
 				.fetch();
 	}
