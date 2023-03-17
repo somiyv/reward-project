@@ -15,6 +15,8 @@
     <li>id : member8 , pw : member8</li>
     <li>id : member9 , pw : member9</li>
     <li>id : member10 , pw : member10</li>
+    <li>id : member11 , pw : member11</li>
+    <li>id : member12 , pw : member12</li>
   </div>
       <div class="input-section">
         <label for="inputId">아이디</label>
