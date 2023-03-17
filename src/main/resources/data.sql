@@ -27,3 +27,9 @@ values ('member9', 'member9', 'member9');
 
 insert into member(login_id, name, password)
 values ('member10', 'member10', 'member10');
+
+insert into member(login_id, name, password)
+values ('member11', 'member11', 'member11');
+
+insert into member(login_id, name, password)
+values ('member12', 'member12', 'member12');

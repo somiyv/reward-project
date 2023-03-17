@@ -110,7 +110,7 @@ export default {
           memberId: this.memberId
         }
       }).then(() => {
-        location.reload();
+        this.$forceUpdate();
       })
       .catch((error) => {
         alert(error.response.data.error.message)
