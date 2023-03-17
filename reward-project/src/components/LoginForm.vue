@@ -54,8 +54,7 @@ export default {
           password: this.password
         }
       }).then((result) => {
-        console.log(result.data)
-        localStorage.setItem('member-data', JSON.stringify(result.data.data));
+        localStorage.setItem('member-data', JSON.stringify(result.data));
         router.push({path: '/board'})
       })
       .catch((error) => {

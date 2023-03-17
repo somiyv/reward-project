@@ -1,6 +1,7 @@
 package com.example.reward.domain.member.service.impl;
 
 import com.example.reward.domain.LoginRequest;
+import com.example.reward.domain.LogoutRequest;
 import com.example.reward.domain.member.dto.MemberDTO;
 import com.example.reward.domain.member.entity.Member;
 import com.example.reward.domain.member.repository.MemberRepository;
@@ -34,8 +35,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void logout(Long memberId) {
-		Member member = memberRepository.findById(memberId)
+	public void logout(LogoutRequest request) {
+		Member member = memberRepository.findById(request.getMemberId())
 				.orElseThrow(() -> ApiException.of(ErrorCode.MEMBER_NOT_FOUND));
 		member.logout();
 	}

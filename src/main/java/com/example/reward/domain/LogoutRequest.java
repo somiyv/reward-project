@@ -4,11 +4,9 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 
 @Getter
-public class LoginRequest {
+public class LogoutRequest {
 
 	@NotNull
-	String loginId;
-	@NotNull
-	String password;
+	Long memberId;
 
 }
