@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS member
 (
     id       BIGINT            NOT NULL AUTO_INCREMENT,
     login_id VARCHAR(30)       NOT NULL COMMENT '로그인 아이디',
+    password VARCHAR(30)       NOT NULL COMMENT '비밀번호',
     name     VARCHAR(30)       NOT NULL COMMENT '사용자명',
     is_login tinyint default 0 NOT NULL COMMENT '로그인 여부',
     PRIMARY KEY (id)

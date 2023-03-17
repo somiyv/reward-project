@@ -23,6 +23,9 @@ public class Member {
 	private String loginId;
 
 	@Column
+	private String password;
+
+	@Column
 	private String name;
 
 	@Column
@@ -30,5 +33,13 @@ public class Member {
 
 	public String getRewardDaysKey() {
 		return Joiner.on(":").join("reward", "member", getId());
+	}
+
+	public void login() {
+		this.isLogin = true;
+	}
+
+	public void logout() {
+		this.isLogin = false;
 	}
 }

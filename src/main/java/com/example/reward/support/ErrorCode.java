@@ -15,7 +15,8 @@ public enum ErrorCode {
 	MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "멤버가 존재하지 않습니다."),
 
 	REWARD_EVENT_HAS_ENDED(HttpStatus.CONFLICT, "보상 이벤트 지급이 종료되었습니다."),
-	ALREADY_HAS_REWARDED(HttpStatus.CONFLICT, "오늘 이미 보상 지급을 받으셨습니다.");
+	ALREADY_HAS_REWARDED(HttpStatus.CONFLICT, "오늘 이미 보상 지급을 받으셨습니다."),
+	AUTHENTICATION_FAIL(HttpStatus.UNAUTHORIZED, "아이디 또는 비밀번호가 틀렸습니다.");
 
 
 	private HttpStatus httpStatus;
