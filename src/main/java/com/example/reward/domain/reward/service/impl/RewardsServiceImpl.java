@@ -72,6 +72,10 @@ public class RewardsServiceImpl implements RewardsService {
 
 	@Override
 	public RewardCreateRequest validation(Long memberId) {
+		// 유효하지 않은 ID 체크를 위해 추가
+		Member member = memberRepository.findById(memberId)
+				.orElseThrow(() -> ApiException.of(ErrorCode.MEMBER_NOT_FOUND));
+
 		// 10명이 찼는가?
 		if (Objects.equals(redisService.get(RewardPolicyConstants.TODAY_REWARDS_KEY, Integer.class),
 				RewardPolicyConstants.MAXIMUM_REWARDS_DAYS)) {
@@ -79,7 +83,7 @@ public class RewardsServiceImpl implements RewardsService {
 		}
 
 		// 보상받을 멤버의 키, value : ['2023-03-15', '2023-03-16'..]
-		String memberKey = Joiner.on(":").join("reward", "member", memberId);
+		String memberKey = member.getRewardDaysKey();
 		// 멤버가 마지막에 보상받은 날짜
 		LocalDate lastDate = DateUtils.toLocalDateString(redisService.getLastIndex(memberKey));
 		// 현재 멤버가 보상받은 일수
