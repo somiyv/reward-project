@@ -18,6 +18,18 @@ docker-compose up --build
 
 # 테스트 방법
 1. 메인페이지에 등록된 아이디로 로그인합니다.
+id : member1 , pw : member1
+id : member2 , pw : member2
+id : member3 , pw : member3
+id : member4 , pw : member4
+id : member5 , pw : member5
+id : member6 , pw : member6
+id : member7 , pw : member7
+id : member8 , pw : member8
+id : member9 , pw : member9
+id : member10 , pw : member10
+id : member11 , pw : member11
+id : member12 , pw : member12
 2. 조회 또는 보상지급 버튼을 눌러 보상을 확인합니다.
 3. 리스트에서 눌러 상세 데이터를 조회합니다.
 
